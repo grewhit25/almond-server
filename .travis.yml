@@ -18,25 +18,25 @@ env:
   - secure: AyRH4a0AC71xNkyZuRdISO6p+efoo05zGk7YOel896K2EZr1MaowOQkNhlIzioTndHee9qpexmWiYCAIGpajITrCpt6dkNfyAWHsHEs56fhQGKd27St2vhMkEKImAdMJ9/btAxvgHvuvyM7vZDcqEsiEzhiRG6BGCM3g15KirGc73iPC/lxgxpN594UZFsagP+s8cUAIBanaCIYvOAHZ8jCuczGG5zMRJZOEWxBveBnnh7mXXPssZpuozQ8+gc9lgGpQwTKkWUwL3i016Qvsxbnsc8RcpHULDr/ywS9x321Uf8GPOVcD/cpmsuwdDhTlVddIR5vExxexOTx5xVWJ2iz/8kkd8mGSxbs6lpiIm+eU9mn8XH1GGYIT3Z4c8T1lrZ1TDdsG0XjvsrGxmgWxtepagOIyGyPluN9eBRfQlfinr2q3sI+OgHFlcbRKBeca0uS2duIOyqDc8tBeyNl7TDW3akMeFW/wYcWVkG4h4UbGJKYMdzhVNu53VUoEKuL2HKRHAwpWFoj8gzQAV6vuzXrsa43OXXfDprfJUA1gE5FzM4D6qw5r41QEZ783Wtt3VlMtf7oxWi0sPScVh9GbY5DdoONIYxP/iFeouSZN3dQK8ckOIkHlQckjI4dq4j2ccXHv5Fx/PLf3CERe5giKaAaJLmcoVPtNkTvq3+aQko0=
   - secure: cAZm/y38N5+Pb2xrp7J7F26rhYdR5nvu00bXUtWn5gipCSLfNKCX8ZN1lYmDCOSGlZBEovIsLA715CmxP+KDorZxgixZWbEPUqfmsCwzioAUhj8tjZCLq1mL41myzu7qAXnN1GiP3j/MfoptaZqzZ28c+cdMrsiz1grCPe4FvMr0ZacYyYVcvRGAhDVfOqGUX6Xo3i2xXYL6WZUXZykUdLpVEC+XAkMat7tUq7grkhTif02kT9DB6rzER4E8QeZmLVJQ4tBqi9OrSGx24s+aTpBm21AsH6TFYUusT1vmKWFlo8TPGspyWpg+TL2SWnb+IoANjfNNArFICeLRkqtd/vI5aGbNFTfdZuJO77T3if1apxGGlE9I3u3RdRlAzoQZ5HF+DK2UD7aZ7aE4oeC05QOvCjVqaFvLtU8DxReFk2EzYjNp3zgRiapAPzUodUc6gsIPIun7+07VIl9camynik4At/qllqNjjxqNHsrZqxLgNWxXj+DyzxzUOT4bplD1gdZuMUMUDbqYJgM2cRdwRFzs3vczjuk84oFrqJwaDVCAMkbLCOfPJ4CJJxqJbf4FOBz5VIicef0Dqjs6ycz0qefRD9ts0juZppMmCrip9QYNDmE58+/ymSoMAZE+dX96ZmE1CN/eEKC65Rs0y5SweIhH5jvRuZY2euC3i0oqEbk=
   - secure: YQ99gsn9BZM0lDtRmU4ReANoqthCmffSX00OMix5PpqaOTj6tn9GtZHdpUw79wIf6VWzq0GbjTDSkxl7fIiuuxXPdKyNgRB5L3CU6zTpGS0CVgI874a24hItmaHDeBWJrkKHuj6BaDMpsiZpEWGmJD0GKkPfg5UoXQyFU8ZVIgykUmbwitYC/CQwp6YUsxkceEGE6DkYxcg5/EHBiQwQS8coUmadLX76sLd4yWbg4m/D6BTBf5YswOhsTK25bnmgvCiKylza2OLciqqmjEdO9RRk9e1wXZU4RnCOsbocKQO1K49RZAPVcAd2CchyJQEaEPV/Px416BCV7AK46w5AvQBQ0JaUimVSRZWURW45B49TSrcocllLZk1FEmWRafzYDYda9kR2tBqCdTgA/5KzXye1VmFxLK7gFGxKRf4ZUz7GvCjYS4UA1jNkIKJdFCIePJAIiQ7DLtt7X6s1zxSV1r//IzjpesHyVKtejtI9Zlch7zvvSmHV35F534G8s7YdAnWfW5BbwXtQjJP+m+9qb701AS0YwjXUQ6cPY1973OiufJecmMTV1HoLmQOS2DB8OBeV0OJykxdux2cESwCkFCCDDTuLWw3RNoyb67xavGcoA3Qhy2f3tyn1hON2uW2LhxZmBllldbBPZLXdXdgypt1VB7v+caVx+G9lv07NSwQ=
-before_install:
-- sudo apt-get remove docker docker-engine docker.io
-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-- sudo add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubuntu
-  $(lsb_release -cs) stable"
-- sudo apt-get update
-- sudo apt-get -y install docker-ce
-- echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
-- sudo service docker restart
-- mkdir ~/.docker
-- echo '{"experimental":"enabled"}' | tee ~/.docker/config.json
-- ls -al ~/.docker/config.json
-- cat ~/.docker/config.json
+# before_install:
+# - sudo apt-get remove docker docker-engine docker.io
+# - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# - sudo add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubuntu
+#   $(lsb_release -cs) stable"
+# - sudo apt-get update
+# - sudo apt-get -y install docker-ce
+# - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
+# - sudo service docker restart
+# - mkdir ~/.docker
+# - echo '{"experimental":"enabled"}' | tee ~/.docker/config.json
+# - ls -al ~/.docker/config.json
+# - cat ~/.docker/config.json
 jobs:
   fast_finish: true
   include:
   - stage: Deploy docker image
     script:
     - source ./buildx_ci_images.sh
-    - set -ex; setup_ci_environment::main; set +x
     - while sleep 300; do echo "still alive"; done &
+    - set -ex; setup_ci_environment::main; set +x
     - set -ex; build_ci_images::main; set +x
