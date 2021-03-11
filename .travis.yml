@@ -1,21 +1,41 @@
+sudo: required
 branches:
-  except:
-  - "/^wip/"
-language: node_js
+  only:
+  - devarm64
+services:
+- docker
+language: shell
 dist: bionic
-addons:
-  firefox: latest-esr
-node_js:
-- '12'
+arch:
+  - arm64
+os: linux
+env:
+  global:
+  - TRAVIS_SECURE_ENV_VARS=true
+  - DOCKER_PLATFORMS='linux/arm64'
+  - TAGS='1.99.0'
+  - VERSION='1.99.0'
+  - secure: fQMK0TuHeUA0hogdBA+Z5le2c95wQepNWIzX/lZPDOTQOs/qk4gGss2xpGWUSwe6HAh5NM7tIsfOOda11A/ZJteaLgqDJFyD4nEeqcQcSGCkQlZ4JHkVii9D8aJD/XGPvfiO/EZFuzIgJyP3DoVqBYi6S4EAMz+EhpwekozJSPPFOtiFhiE71eT/MIvqe6qS6gZQhsmHU9qcQZ6kvSjpAnBPB4t9SWZG1F+aKi929aeEWEXNRJn5USHgb35RsZ8e8qjewPoXsRe15pYZSiIXoc+eBrsj6oHWRIXyprNeOYxm8bfwYu9Wi8xgWimhpG1ff5qFUxC+tW2Ic6u+7mOjyhWHiBwj3akO/9fwx8Ucx6zWxvAa3cynDQaKg0sRnoF0Is3X1gBnS8L/+69QRxd7oOEjzEMgxZ5iD0eWqaPVN8PKtFtvplIIYNTlPHfL/Exfnba9usD+KqtTAbkiZqr4T9Kk/3fy0O+LZRsEAYUP7BBlx03dKxXCIhnTLDdekYmZ8XQVaNOAgdtYtMQyPqTnVV/9MWCcfA6/gMCKPASizyowW3tuLbTS76LnU71fMq1BWzx/KzK4/7Mvw4e2QxzG81N04OWKtHv/bzfvnfa32Ud24Z0dDnJS4tldcY6HD2A9Xokntm8itfSDXqKK2t5Ix/WPlR1y3hjrwyrELVxc5a0=
+  - secure: TMjvJpskAQhUqWe48zmAeSlBeszpS86O8hv/+u6DdyVS+BWNioGJUpI9bwDvXij3xNLCn9vU/Flup5RM/2Rgh8llw+tKdZ9kCpGJKnf+kr6kFN3JXi4ukhwVlelgpATqKmVMU8CyBuwKz20aa5p2TTykrW9K8Isf/PYA1YJiaOzGSzTykw5CusUpe488b/CeeLLnZJTG15ibLzTysZNIPKYNZz2QQl0NRCmxpuPEA24nZhAyFeuyrlwLdM/BFFclu53OzAU8LW9+WkkUiRrad3+P58soZ1JSRTJWjtroMVbYA06dwzwrwkbMp6+n+rAXxI+24DDlKHONiYjtNVeSOZdHsWzQ19PPEKBKDDmyjsiMyRHGWM6QJVGjjH/fjdEei6VtWLAK/6M+wrqJAZyP94ezlk6cKggG3rkKOpRsxRXSnm1sauzvcUS/I986dKUbvG9qzNJOgCHKCnR4c+BkLW5bWt74eZBeBXbc+0TcckKhn+qsOhvdi9+CVtzgXApTdlXrXrfH2bK1yC65BmnjlMrBMePtILIJEOAw0dKhYwFG4HFlMCT4VfWYdv0hGIj5jZU01XNHVAPVPoMUTWraPA2bc22Q8e3n6ThJjJwx35xIhI05pLWx9w8ebPD+egS6bh9wGCAYLdcozLOdB1YTg0mh8+RLjFXJ41xAitGqzN0=
+  - secure: BGmwQzWyevRD1swoMCgIrg2DoXt7yWUQOL0Ow5N/w8pTe+6aLqBEVALx79sNwFYU8x0AGaXkHXMN4YzBba8FpN4yXp1CeR6AdI+7n+kmhFpYoDOQ6rCaQ4O5ZO4b3jeng8ZOKy0XMkSRywTaZTZJUndpH7JUNh2hxLJWy1CWYlUKohV6mVe0kmwRVSeiU254hVr7fS4KWWXl3zpf+bKw++pKNia/TPamQ1zMBzS8vrpLuWVxZ2RIzvQb5A+9excajrJ6pu4wBXC+QmEe6z7LKw4TjSBspxPS1uGbsDSCrEy+WlVq4afL09P5Uy1JgLrAn1DfuuzZTklHimfkkxJYJ6d6ZpZb46ulaGb/7jItgs7XvcBFLrpJ1xzDr4RuA5jGHcIet4XtLpRj/9o5QyowFR2+muhuq/tVDK1Uvctv+xFkianLHnkf4jvzt43C0jUyDBVIBPr4O7j6wOMs1bC9kOu96Vyt6XZdwIMYgcCQtsGV59w+qBAEkBb2pQOARl2z6uMNpZ4ivR9HdbZ+Gi0T4weuCvWBeHjO1Vz+s7XcckeNGw3XSO4/5jRLbKzUbSClZ/4IQZTawxaeCVVT7vh+ScKPXSaLvSCsScM2KlzlTBwWP4v59AuDIKKKZ6PvFKuUAfe3VPMzfYyYW+4ffsfrsCAO//t+GSUIKx8fXdVCw+E=
 before_install:
-- mkdir geckodriver/
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.22.0/geckodriver-v0.22.0-linux64.tar.gz
-- tar xvf geckodriver-v0.22.0-linux64.tar.gz -C geckodriver/
-- export PATH="`pwd`/cvc4:`pwd`/geckodriver:$PATH"
-- sudo apt-get update -q -y
-- sudo apt-get install -y pulseaudio graphicsmagick libpulse-dev libcanberra-dev libatlas-base-dev unzip
-- pulseaudio --start
-script:
-- npm run lint
-- LOCALE="en-US" TZ="America/Los_Angeles" npm test
-after_success: npm run coverage
+  - sudo apt-get remove docker docker-engine docker.io
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
+  - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
+  - sudo service docker restart
+  - mkdir ~/.docker
+  - echo '{"experimental":"enabled"}' | tee ~/.docker/config.json
+  - ls -al ~/.docker/config.json
+  - cat ~/.docker/config.json
+jobs:
+  fast_finish: true
+  include:
+  - stage: Deploy docker image
+    script:
+    - source ./buildx_ci_images.sh
+    - set -ex; setup_ci_environment::main; set +x
+    - while sleep 300; do echo "still alive"; done &
+    - set -ex; build_ci_images::main; set +x
